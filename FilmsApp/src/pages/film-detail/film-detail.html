@@ -1,0 +1,68 @@
+<!-- MENU -->
+    <ion-header>
+      <ion-navbar hideBackButton>
+        <button ion-button menuToggle right (click)="goBack()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{film.title}}</ion-title>
+      </ion-navbar>
+    </ion-header>
+
+
+<!-- FILM DETAIL-->
+    <ion-content>
+      <div *ngIf="film" class="container">
+                <ion-list inset>
+      <form style="width:80%;margin:auto;" method="post" enctype="application/x-www-form-urlencoded">
+          <ion-item>
+            <ion-label floating>Title</ion-label>
+            <ion-input type="text" id="title" name="title" [(ngModel)]="film.title"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Director</ion-label>
+            <ion-input type="text" id="director" name="director" [(ngModel)]="film.director"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Year</ion-label>
+            <ion-input type="number" id="year" name="year" [(ngModel)]="film.year"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-input type="text" id="description" name="description" [(ngModel)]="film.description"></ion-input>
+          </ion-item>
+          <br/>
+          <!-- BUTTONS -->
+          <button style="float:left;" ion-button color="teal" icon-left (click)="create(film)">
+            <div>
+              <ion-icon name='add'></ion-icon>
+              <br/>
+              <label>
+              Add</label>
+            </div>
+            </button>
+          <button style="float:left;" ion-button color="light" icon-left (click)="save(film)">
+            <div>
+              <ion-icon name='refresh'></ion-icon>
+              <br/>
+              <label>Update</label>
+            </div>
+            </button>
+          <button style="float:left;" ion-button color="danger" (click)="delete(film)">
+            <div>
+            <ion-icon class="mybutton" name='trash'></ion-icon>
+            <br/>
+            <label>Remove</label>
+          </div>
+          </button>
+          <br/>
+          <button style="width: 35%;float:right; margin-top:5%;" ion-button color="dark" icon-bottom (click)="goBack()">
+            <div>
+            <ion-icon class="mybutton" style="color:white;" name='arrow-back'></ion-icon>
+            <br/>
+            <label style="color:white;">Back</label>
+          </div>
+          </button>
+      </form>
+      </ion-list>
+      </div>
+    </ion-content>

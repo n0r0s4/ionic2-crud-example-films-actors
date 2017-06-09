@@ -1,0 +1,38 @@
+<!-- MENU -->
+    <ion-header>
+      <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Actors</ion-title>
+      </ion-navbar>
+    </ion-header>
+
+<!-- ACTORS -->
+    <ion-content>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+    	        <ion-list>
+                <ion-item class="item-remove-animate item-icon-right"  *ngFor="let actor of actors"  (click)="gotoDetail(actor)">
+                    <ion-avatar item-left>
+                      <ion-icon name="contact"></ion-icon>
+                      </ion-avatar>
+                      <h2>{{actor.name}}</h2>
+                        <p>{{actor.year}}</p>
+                        <button style="float:right;" ion-button color="light" icon-left>
+                          <ion-icon name='arrow-dropright'></ion-icon>
+                        </button>
+                </ion-item>
+            </ion-list>
+
+      <div *ngIf="selectedItem" padding>
+        From <b>{{selectedItem.title}}</b>
+      </div>
+    </ion-content>

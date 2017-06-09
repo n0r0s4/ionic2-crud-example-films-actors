@@ -1,0 +1,2 @@
+1. #npm install
+2. CORS plugin on web browser needed if your webservice is outside!

@@ -1,0 +1,40 @@
+<!-- MENU -->
+    <ion-header>
+      <ion-navbar>
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Films</ion-title>
+      </ion-navbar>
+    </ion-header>
+
+<!-- FILMS -->
+    <ion-content>
+      <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+        </ion-refresher-content>
+      </ion-refresher>
+
+            <ion-list>
+              <ion-item class="item-remove-animate item-icon-right"  *ngFor="let film of films"  (click)="gotoDetail(film)">
+                  <ion-avatar item-left>
+                    <ion-icon name="film"></ion-icon>
+                    </ion-avatar>
+                    <h2>{{film.title}}</h2>
+                    <p>Director: <strong>{{film.director}}</strong></p>
+                    <p>Year: <strong>{{film.year}}</strong></p>
+                    <p>Description: <strong>{{film.description}}</strong></p>
+                      <i class="icon ion-arrow-right-b"></i>
+                      <button style="float:right;" ion-button color="light" icon-left>
+                        <ion-icon name='arrow-dropright'></ion-icon>
+                      </button>
+              </ion-item>
+          </ion-list>
+      <div *ngIf="selectedItem" padding>
+        From <b>{{selectedItem.title}}</b>
+      </div>
+    </ion-content>
